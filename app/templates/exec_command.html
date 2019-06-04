@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Remote Execute{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal form-border" method="post" enctype="multipart/form-data"
+                          action="/exec_command/?action=exec">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Host</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="target" value={{ target }}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Command</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="command" value={{ command }}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-8 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Return</label>
+
+                            <div class="col-sm-6">
+                                <textarea class="form-control" rows="10">{{ ret }}</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
